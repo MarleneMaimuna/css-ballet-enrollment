@@ -1,0 +1,264 @@
+/* =========================
+   Paleta / Reset básico
+   ========================= */
+:root{
+  /* Cores do tema */
+  --pink: #ec4899;        /* rosa principal */
+  --pink-100: #fce7f3;    /* rosa clarinho para bordas/fundos */
+  --pink-700: #be185d;    /* rosa escuro (acentos) */
+
+  --green: #16a34a;       /* verde principal */
+  --green-dark: #166534;  /* verde escuro (hover) */
+
+  --white: #ffffff;
+  --ink: #111111;         /* texto principal */
+  --ink-dim: #444444;     /* texto secundário */
+
+  /* UI */
+  --radius: 14px;
+  --shadow: 0 12px 28px rgba(0,0,0,.12);
+
+  /* Espaçamentos */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 16px;
+  --space-4: 22px;
+  --space-5: 32px;
+  --space-6: 44px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", Helvetica, "Segoe UI Emoji";
+  color: var(--ink);
+  line-height: 1.6;
+
+  /* PAPEL DE PAREDE ROSA */
+  background:
+    radial-gradient(1200px 800px at 20% -10%, #f9a8d4 0%, transparent 60%) no-repeat,
+    radial-gradient(1000px 700px at 80% -10%, #f472b6 0%, transparent 55%) no-repeat,
+    #ffe4f1; /* base rosa bem clara */
+}
+
+/* Limite de largura (sem alterar seu HTML) */
+header, main, footer{
+  max-width: 1024px;
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+/* =========================
+   Cabeçalho
+   ========================= */
+header{
+  /* cabeçalho “cartão” branco para contraste no fundo rosa */
+  background: var(--white);
+  color: var(--ink);
+  padding-block: var(--space-6) var(--space-5);
+  border-bottom: 4px solid var(--pink-100);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+}
+header h1{
+  margin: 0 0 var(--space-2);
+  font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem);
+  letter-spacing: .3px;
+  color: var(--green); /* título em verde */
+}
+header p{
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+/* =========================
+   Seções (Box Model visível)
+   ========================= */
+section{
+  background: var(--white);
+  margin-block: var(--space-5);              /* MARGIN: separa seções */
+  padding: var(--space-4);                   /* PADDING: afasta conteúdo da borda */
+  border: 3px solid var(--pink-100);         /* BORDER: contorno rosa clarinho */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+section h2{
+  margin-top: 0;
+  color: var(--green);
+}
+
+/* Linha horizontal com rosa */
+hr{
+  border: none;
+  border-top: 4px solid var(--pink);
+  margin-block: var(--space-5);
+  opacity: .8;
+}
+
+/* =========================
+   Listas
+   ========================= */
+ol, ul{ padding-left: 1.2rem; }
+ol li::marker{ color: var(--pink); font-weight: 700; }
+ul li::marker{ color: var(--pink); }
+li{ margin-block: .4rem; }
+
+/* =========================
+   Tabela
+   ========================= */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden; /* cantos arredondados visíveis */
+  box-shadow: var(--shadow);
+}
+caption{
+  caption-side: top;
+  padding: var(--space-2);
+  font-weight: 700;
+  color: var(--green);
+}
+thead th{
+  background: var(--green);
+  color: var(--white);
+  text-align: left;
+  padding: var(--space-2);
+}
+tbody td, tbody th{
+  border: 1px solid var(--pink-100);
+  padding: var(--space-2);
+}
+tbody tr:nth-child(even){
+  background: #fffafd; /* branco com leve toque rosa */
+}
+
+/* =========================
+   Mídia
+   ========================= */
+img, video{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 3px solid var(--pink-100);
+  box-shadow: var(--shadow);
+  margin-block: var(--space-2);
+}
+audio{ width: 100%; margin-block: var(--space-2); }
+
+/* Destacar APENAS “Ballerina Photo” e “Ballet Music Audio” em VERDE */
+h3:has(+ img),
+h3:has(+ audio){
+  color: var(--green);
+}
+h3 + img,
+h3 + audio{
+  border: 3px solid var(--green) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 0 0 4px rgba(22,101,52,.15);
+  border-radius: var(--radius);
+}
+h3 + audio{
+  background: #f0fff4;    /* verde bem clarinho */
+  accent-color: var(--green); /* suporte parcial */
+}
+audio::-webkit-media-controls-panel{
+  background-color: #f0fff4;
+}
+
+/* =========================
+   Formulário
+   ========================= */
+form{
+  display: grid;
+  gap: var(--space-4);
+}
+fieldset{
+  border: 2px solid var(--pink-100);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+legend{
+  padding: .2rem .7rem;
+  background: var(--pink);
+  color: var(--white);
+  border-radius: 999px;
+  font-weight: 700;
+}
+label{
+  display: block;
+  margin-top: .6rem;
+}
+input, select, textarea{
+  width: 100%;
+  padding: .7rem .9rem;
+  border: 2px solid var(--pink-100);
+  border-radius: 12px;
+  outline: none;
+  font: inherit;
+  background: #fff;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(236,72,153,.18);
+}
+input:required:invalid{ border-color: #ffc6dc; }
+
+/* Checkbox alinhado */
+input[type="checkbox"]{
+  width: auto;
+  margin-right: .4rem;
+  accent-color: var(--green);
+}
+
+/* Botão principal (VERDE com texto branco) */
+button, .btn{
+  display: inline-block;
+  background: var(--green);
+  color: var(--white);
+  border: 2px solid var(--green);
+  border-radius: 12px;
+  padding: .8rem 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .12s ease, filter .12s ease, background .12s ease;
+}
+button:hover, .btn:hover{
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  transform: translateY(-1px);
+}
+button:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(22,163,74,.25);
+}
+
+/* =========================
+   Rodapé
+   ========================= */
+footer{
+  margin-top: var(--space-6);
+  padding-block: var(--space-6);
+  text-align: center;
+  color: var(--ink-dim);
+  border-top: 4px solid var(--pink);
+  background: var(--white);
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: var(--shadow);
+}
+footer p{ margin: 0; }
+
+/* =========================
+   Acessibilidade / Utilidades
+   ========================= */
+:focus-visible{ outline: 3px solid rgba(236,72,153,.35); outline-offset: 2px; }
+
+/* Classe opcional para ver contornos do Box Model em tudo */
+.debug *{ outline: 1px dashed rgba(236,72,153,.35); outline-offset: -1px; }
