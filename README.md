@@ -1,0 +1,1 @@
+HTML + CSS exercise: “Ballet Enrollment” page with a pink/green/white theme. External stylesheet (styles.css), clean selectors, use of color, font-size, margin, padding, border, and background, with a clear demonstration of the Box Model. No JS.
